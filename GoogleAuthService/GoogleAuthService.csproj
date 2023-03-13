@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\KHellang\Middleware\src\Authentication.JwtBearer.Google\Authentication.JwtBearer.Google.csproj" />
+    <ProjectReference Include="..\Authentication.JwtBearer.Google\Authentication.JwtBearer.Google.csproj" />
   </ItemGroup>
 
 </Project>
