@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		GoogleAuth.txt = GoogleAuth.txt
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.JwtBearer.Google", "..\KHellang\Middleware\src\Authentication.JwtBearer.Google\Authentication.JwtBearer.Google.csproj", "{80E2DF9A-2066-4FD3-84F7-8F8D9D4EFA12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{AED4DDA1-F707-4558-87E7-DEC9F098D2D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AED4DDA1-F707-4558-87E7-DEC9F098D2D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AED4DDA1-F707-4558-87E7-DEC9F098D2D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80E2DF9A-2066-4FD3-84F7-8F8D9D4EFA12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80E2DF9A-2066-4FD3-84F7-8F8D9D4EFA12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80E2DF9A-2066-4FD3-84F7-8F8D9D4EFA12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80E2DF9A-2066-4FD3-84F7-8F8D9D4EFA12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

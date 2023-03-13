@@ -4,6 +4,9 @@ namespace GoogleAuthService.Controllers
   using Google.Apis.Services;
   //using Microsoft.AspNetCore.Authorization;
   using Microsoft.AspNetCore.Mvc;
+  using System.Security.Cryptography.Xml;
+  using System;
+  using Microsoft.AspNetCore.Authorization;
 
   [ApiController]
   [Route("[controller]")]
@@ -24,8 +27,9 @@ namespace GoogleAuthService.Controllers
     //https://www.googleapis.com/auth/userinfo.email
     [HttpGet]
     //[GoogleScopedAuthorize("https://www.googleapis.com/auth/userinfo.email")]
-    [GoogleScopedAuthorize(Google.Apis.PeopleService.v1.PeopleServiceService.ScopeConstants.UserinfoEmail)]
-    //[Authorize]
+    //[GoogleScopedAuthorize(Google.Apis.PeopleService.v1.PeopleServiceService.ScopeConstants.UserinfoEmail)]
+    //[Authorize(Roles = "https://www.googleapis.com/auth/userinfo.email")]
+    [Authorize]
     public IEnumerable<WeatherForecast> Get()
     {
       return Enumerable.Range(1, 5).Select(index => new WeatherForecast

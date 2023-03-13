@@ -2,9 +2,12 @@ namespace GoogleAuthService
 {
   using Google.Apis.Auth.AspNetCore3;
   using Microsoft.AspNetCore.Authentication.Cookies;
+  using Microsoft.AspNetCore.Authentication.JwtBearer;
   //using Microsoft.AspNetCore.Authentication.Google;
   //using Microsoft.AspNetCore.Identity;
   using Microsoft.OpenApi.Models;
+  using Hellang.Authentication.JwtBearer.Google;
+  using Microsoft.AspNetCore.Identity;
 
   public class Program
   {
@@ -29,25 +32,25 @@ namespace GoogleAuthService
       //  googleOptions.ClientSecret = "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";
       //});
 
-      builder.Services
-        .AddAuthentication(o =>
-        {
-          // This forces challenge results to be handled by Google OpenID Handler, so there's no
-          // need to add an AccountController that emits challenges for Login.
-          o.DefaultChallengeScheme = GoogleOpenIdConnectDefaults.AuthenticationScheme;
-          // This forces forbid results to be handled by Google OpenID Handler, which checks if
-          // extra scopes are required and does automatic incremental auth.
-          o.DefaultForbidScheme = GoogleOpenIdConnectDefaults.AuthenticationScheme;
-          // Default scheme that will handle everything else.
-          // Once a user is authenticated, the OAuth2 token info is stored in cookies.
-          o.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-        })
-        .AddCookie()
-        .AddGoogleOpenIdConnect(options =>
-        {
-          options.ClientId = "69829818979-dd0aicu1rs7bpvmt0hj0d6j44vnnc4ee.apps.googleusercontent.com";
-          options.ClientSecret = "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";
-        });
+      //builder.Services
+      //  .AddAuthentication(o =>
+      //  {
+      //    // This forces challenge results to be handled by Google OpenID Handler, so there's no
+      //    // need to add an AccountController that emits challenges for Login.
+      //    o.DefaultChallengeScheme = GoogleOpenIdConnectDefaults.AuthenticationScheme;
+      //    // This forces forbid results to be handled by Google OpenID Handler, which checks if
+      //    // extra scopes are required and does automatic incremental auth.
+      //    o.DefaultForbidScheme = GoogleOpenIdConnectDefaults.AuthenticationScheme;
+      //    // Default scheme that will handle everything else.
+      //    // Once a user is authenticated, the OAuth2 token info is stored in cookies.
+      //    o.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+      //  })
+      //  .AddCookie()
+      //  .AddGoogleOpenIdConnect(options =>
+      //  {
+      //    options.ClientId = "69829818979-dd0aicu1rs7bpvmt0hj0d6j44vnnc4ee.apps.googleusercontent.com";
+      //    options.ClientSecret = "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";
+      //  });
 
       //builder.Services.AddIdentity<IdentityUser, IdentityRole>();
       //builder.Services
@@ -63,33 +66,47 @@ namespace GoogleAuthService
       //    options.ClientSecret = "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";
       //  });
 
+      builder.Services
+        .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+      //.AddGoogleOpenIdConnect(options =>
+      //{
+      //  options.ClientId = "69829818979-dd0aicu1rs7bpvmt0hj0d6j44vnnc4ee.apps.googleusercontent.com";
+      //  options.ClientSecret = "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";
+      //});
+      //.AddGoogle(options =>
+      //{
+      //  options.ClientId = "69829818979-dd0aicu1rs7bpvmt0hj0d6j44vnnc4ee.apps.googleusercontent.com";
+      //  options.ClientSecret = "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";
+      //});
+        .AddJwtBearer(x => x.UseGoogle(
+          clientId: "69829818979-dd0aicu1rs7bpvmt0hj0d6j44vnnc4ee.apps.googleusercontent.com"));
 
       builder.Services.AddSwaggerGen(option =>
       {
         option.SwaggerDoc("v1", new OpenApiInfo { Title = "Demo API", Version = "v1" });
-        //option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-        //{
-        //  In = ParameterLocation.Header,
-        //  Description = "Please enter a valid token",
-        //  Name = "Authorization",
-        //  Type = SecuritySchemeType.Http,
-        //  BearerFormat = "JWT",
-        //  Scheme = "Bearer"
-        //});
-        //option.AddSecurityRequirement(new OpenApiSecurityRequirement
-        //{
-        //    {
-        //        new OpenApiSecurityScheme
-        //        {
-        //            Reference = new OpenApiReference
-        //            {
-        //                Type=ReferenceType.SecurityScheme,
-        //                Id="Bearer"
-        //            }
-        //        },
-        //        new string[]{}
-        //    }
-        //});
+        option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+        {
+          In = ParameterLocation.Header,
+          Description = "Please enter a valid token",
+          Name = "Authorization",
+          Type = SecuritySchemeType.Http,
+          BearerFormat = "JWT",
+          Scheme = "Bearer"
+        });
+        option.AddSecurityRequirement(new OpenApiSecurityRequirement
+        {
+            {
+                new OpenApiSecurityScheme
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Type=ReferenceType.SecurityScheme,
+                        Id="Bearer"
+                    }
+                },
+                new string[]{}
+            }
+        });
       });
 
       var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
@@ -119,8 +136,9 @@ namespace GoogleAuthService
       app.UseHttpsRedirection();
 
       app.UseAuthentication();
+      app.UseRouting();
       app.UseAuthorization();
-
+      //app.UseEndpoints();
       app.MapControllers();
 
       app.Run();
