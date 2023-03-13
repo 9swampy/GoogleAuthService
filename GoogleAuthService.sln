@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32825.248
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoogleAuthService", "GoogleAuthService\GoogleAuthService.csproj", "{AED4DDA1-F707-4558-87E7-DEC9F098D2D0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{556B0A4E-F623-4912-88BF-09405BE40105}"
+	ProjectSection(SolutionItems) = preProject
+		GoogleAuth.txt = GoogleAuth.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AED4DDA1-F707-4558-87E7-DEC9F098D2D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AED4DDA1-F707-4558-87E7-DEC9F098D2D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AED4DDA1-F707-4558-87E7-DEC9F098D2D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AED4DDA1-F707-4558-87E7-DEC9F098D2D0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CE55517F-A91B-4FF7-97AE-46157216D791}
+	EndGlobalSection
+EndGlobal

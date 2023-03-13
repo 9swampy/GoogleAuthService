@@ -1,0 +1,10 @@
+ClientID
+69829818979-dd0aicu1rs7bpvmt0hj0d6j44vnnc4ee.apps.googleusercontent.com
+
+ClientSecret
+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
+
+
+dotnet user-secrets set "Authentication:Google:ClientId" "69829818979-dd0aicu1rs7bpvmt0hj0d6j44vnnc4ee.apps.googleusercontent.com"
+dotnet user-secrets set "Authentication:Google:ClientSecret" "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"
+

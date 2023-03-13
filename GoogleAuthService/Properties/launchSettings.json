@@ -1,0 +1,32 @@
+{
+  "profiles": {
+    "GoogleAuthService": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "dotnetRunMessages": true,
+      //"applicationUrl": "https://localhost:7165;http://localhost:5165;https://192.168.31.130:7165;http://192.168.31.130:5165",
+      "applicationUrl": "https://localhost:7165;http://localhost:5165;https://192.168.122.130:7165;http://192.168.122.130:5165"
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  },
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:36682",
+      "sslPort": 44354
+    }
+  }
+}
